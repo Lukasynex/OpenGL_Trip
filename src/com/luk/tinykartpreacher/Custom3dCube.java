@@ -64,31 +64,17 @@ public class Custom3dCube {
 		pBuff.put(pIndex);
 		pBuff.position(0);
 		
-//		ByteBuffer cBuff = ByteBuffer.allocateDirect(rgbaVals.length * 4);//short ma 2 bajty rozmiaru
-//		cBuff.order(ByteOrder.nativeOrder());
-//		colorBuff = cBuff.asShortBuffer();
-//		colorBuff.put(pIndex);
-//		colorBuff.position(0);
-
 	}
 
 	public void draw(GL10 gl) {
 		gl.glFrontFace(GL10.GL_CW);
 		gl.glEnable(GL10.GL_CULL_FACE);
 		gl.glCullFace(GL10.GL_BACK);
-		
 		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
-	//	gl.glEnableClientState(GL10.GL_COLOR_ARRAY);
-		
-		
+		gl.glColor4f(0.5f, 0.5f, 1.0f, 1.0f);	
 		gl.glVertexPointer(3, GL10.GL_FLOAT, 0, vertBuff);
-		
-		//gl.glColorPointer(4, GL10.GL_FLOAT, 0, colorBuff);
-		
 		gl.glDrawElements(GL10.GL_TRIANGLES, pIndex.length,
 				GL10.GL_UNSIGNED_SHORT, pBuff);
-		
-		//gl.glDisableClientState(GL10.GL_COLOR_ARRAY);
 		gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
 		gl.glDisable(GL10.GL_CULL_FACE);
 	}

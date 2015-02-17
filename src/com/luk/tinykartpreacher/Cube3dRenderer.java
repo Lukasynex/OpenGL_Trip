@@ -13,9 +13,12 @@ public class Cube3dRenderer implements Renderer {
 	private volatile float angle = 0.0f;
 	
 	private Custom3dCube cube;
+//	private TexturedCube tex;
+
 
 	public Cube3dRenderer() {
 		cube = new Custom3dCube();
+//		tex = new TexturedCube();
 	}
 
 	@Override
