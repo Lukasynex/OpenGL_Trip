@@ -20,14 +20,14 @@ public class Custom3dCube {
 //			-1,  1,  1, // p7
 //	};
 	private float vertices[] = { 
-			 1,  3, -1,// p0 - topFrontRight
-			 1, -1, -1, // p1 bottomFront Right
-			-1, -1, -1, // p2 bottomFront Left
-			-1,  3, -1, // p3 top Front Left
-			 1,  3,  1, // p4
-			 1, -1,  1, // p5
-			-1, -1,  1, // p6
-			-1,  3,  1, // p7
+			 1,  1, -1,// p0 - topFrontRight
+			 1, -3, -1, // p1 bottomFront Right
+			-1, -3, -1, // p2 bottomFront Left
+			-1,  1, -1, // p3 top Front Left
+			 1,  1,  1, // p4
+			 1, -3,  1, // p5
+			-1, -3,  1, // p6
+			-1,  1,  1, // p7
 	};
 	
 	

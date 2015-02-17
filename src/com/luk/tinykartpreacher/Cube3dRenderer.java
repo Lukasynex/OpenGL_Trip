@@ -6,9 +6,12 @@ import javax.microedition.khronos.opengles.GL10;
 import android.opengl.GLU;
 import android.opengl.GLSurfaceView.Renderer;
 import android.os.SystemClock;
+import android.view.MotionEvent;
 
 public class Cube3dRenderer implements Renderer {
 
+	private volatile float angle = 0.0f;
+	
 	private Custom3dCube cube;
 
 	public Cube3dRenderer() {
@@ -34,13 +37,16 @@ public class Cube3dRenderer implements Renderer {
 		gl.glLoadIdentity();
 		GLU.gluLookAt(gl, 0, 0, - 5, 0, 0, 0, 0, 2, 0);
 		
-		long time = SystemClock.uptimeMillis() % 4000L;
-		float angle = 0.090f * ((int) time);
+//		long time = SystemClock.uptimeMillis() % 4000L;
+//		float angle = 0.090f * ((int) time);
 		
-		gl.glRotatef(angle, 0, 1, 0);
+		gl.glRotatef(-angle, 0, 1, 0);
 //		gl.glRotatef(angle, 1, 0, 0);
 		
 		cube.draw(gl);
+	}
+	public float getAngle(){
+		return angle;
 	}
 	@Override
 	public void onSurfaceChanged(GL10 gl, int width, int height) {
@@ -50,5 +56,9 @@ public class Cube3dRenderer implements Renderer {
 		gl.glLoadIdentity();
 		gl.glFrustumf(-ratio, ratio, -1, .5f, 1, 25);
 
+	}
+
+	public void setAngle(float f) {
+		angle = f;
 	}
 }
