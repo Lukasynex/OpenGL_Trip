@@ -1,5 +1,6 @@
 package com.luk.tinykartpreacher;
 
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -7,7 +8,7 @@ import java.nio.ShortBuffer;
 
 import javax.microedition.khronos.opengles.GL10;
 
-public class Custom3dCube {
+public class SecondCube {
 
 //	private float vertices[] = { 
 //			 1,  1, -1,// p0 - topFrontRight
@@ -20,13 +21,13 @@ public class Custom3dCube {
 //			-1,  1,  1, // p7
 //	};
 	private float vertices[] = { 
-			0.2f,  0.2f, -0.2f,// p0 - topFrontRight
-			0.2f, -3, -0.2f, // p1 bottomFront Right
-			-0.2f, -3, -0.2f, // p2 bottomFront Left
+			 3,  0.2f, -0.2f,// p0 - topFrontRight
+			 3, -0.2f, -0.2f, // p1 bottomFront Right
+			-0.2f, -0.2f, -0.2f, // p2 bottomFront Left
 			-0.2f,  0.2f, -0.2f, // p3 top Front Left
-			0.2f,  0.2f,  0.2f, // p4
-			0.2f, -3,  0.2f, // p5
-			-0.2f, -3,  0.2f, // p6
+			 3,  0.2f,  0.2f, // p4
+			 3, -0.2f,  0.2f, // p5
+			-0.2f, -0.2f,  0.2f, // p6
 			-0.2f,  0.2f,  0.2f, // p7
 	};
 	
@@ -51,7 +52,7 @@ public class Custom3dCube {
 
 	private ShortBuffer pBuff;
 
-	public Custom3dCube() {
+	public SecondCube() {
 		ByteBuffer bBuff = ByteBuffer.allocateDirect(vertices.length * 4);
 		bBuff.order(ByteOrder.nativeOrder());
 		vertBuff = bBuff.asFloatBuffer();
@@ -71,7 +72,7 @@ public class Custom3dCube {
 		gl.glEnable(GL10.GL_CULL_FACE);
 		gl.glCullFace(GL10.GL_BACK);
 		gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
-		gl.glColor4f(0.5f, 0.5f, 1.0f, 1.0f);	
+		gl.glColor4f(0.2f, 0.3f, 0.6f, 1.0f);	
 		gl.glVertexPointer(3, GL10.GL_FLOAT, 0, vertBuff);
 		gl.glDrawElements(GL10.GL_TRIANGLES, pIndex.length,
 				GL10.GL_UNSIGNED_SHORT, pBuff);
