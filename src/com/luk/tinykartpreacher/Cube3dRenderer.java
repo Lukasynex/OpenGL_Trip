@@ -17,20 +17,22 @@ public class Cube3dRenderer implements Renderer {
 	private volatile float angleZ = 0.0f;
 	
 	
-//	private Custom3dCube cube;
-	private TexturedCube cube;
+	private Custom3dCube cube;
+//	private TexturedCube cube;
+	private SecondCube cube2;
 
 
 	public Cube3dRenderer(Context context) {
-//		cube = new Custom3dCube();
-		cube = new TexturedCube();
+		cube = new Custom3dCube();
+		cube2 = new SecondCube();
+//		cube = new TexturedCube();
 		this.context = context;
 	}
 
 	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		
-		cube.loadGLTexture(gl, this.context);
+//		cube.loadGLTexture(gl, this.context);
 		gl.glEnable(GL10.GL_TEXTURE_2D);			//Enable Texture Mapping ( NEW )
 		gl.glShadeModel(GL10.GL_SMOOTH); 			//Enable Smooth Shading
 		gl.glClearColor(0.0f, 0.0f, 0.0f, 0.5f); 	//Black Background
@@ -41,9 +43,6 @@ public class Cube3dRenderer implements Renderer {
 		//Really Nice Perspective Calculations
 		gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_NICEST); 
 	
-		
-		
-		
 		
 		gl.glDisable(GL10.GL_DITHER);
 
@@ -60,16 +59,19 @@ public class Cube3dRenderer implements Renderer {
 		gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 		gl.glMatrixMode(GL10.GL_MODELVIEW);
 		gl.glLoadIdentity();
-		GLU.gluLookAt(gl, 0, 0, - 5, 0, 0, 0, 0, 2, 0);
+		//tak było
+//		GLU.gluLookAt(gl, 0, 0, - 5, 0, 0, 0, 0, 2, 0);
+		GLU.gluLookAt(gl, 3, 0, - 8, 0, 0, 0, 0, 2, 0);
 		
 //		long time = SystemClock.uptimeMillis() % 4000L;
 //		float angle = 0.090f * ((int) time);
 		
-		gl.glRotatef(angleX, 1, 0, 0);
-		gl.glRotatef(angleY, 0, 1, 0);
-		gl.glRotatef(angleZ, 0, 0, 1);
+//		gl.glRotatef(angleX, 1, 0, 0);
+		gl.glRotatef(angleZ, 0, 1, 0);
 		
 		cube.draw(gl);
+		gl.glRotatef(angleY, 0, 0, 1);
+		cube2.draw(gl);
 	}
 	
 	@Override
