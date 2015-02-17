@@ -15,10 +15,10 @@ public class MainActivity extends Activity {
 	private float mPreviousX = 0;
 	private float mPreviousY = 0;
 	
-	private Cube3dRenderer mRenderer = new Cube3dRenderer();
-	
 	private GLSurfaceView openGLView;;
-    @Override
+    private Cube3dRenderer mRenderer = new Cube3dRenderer(this);
+	
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
@@ -37,34 +37,29 @@ public class MainActivity extends Activity {
 			            float dx = x - mPreviousX;
 			            float dy = y - mPreviousY;
 
-			            // reverse direction of rotation above the mid-line
 			            if (y > v.getHeight() / 2) {
 			              dx = dx * -1 ;
 			            }
-
-			            // reverse direction of rotation to left of the mid-line
 			            if (x < v.getWidth() / 2) {
 			              dy = dy * -1 ;
 			            }
 
-			            mRenderer.setAngle(
-			                    mRenderer.getAngle() +
-			                    ((dx + dy) * TOUCH_SCALE_FACTOR));
-			            //requestRender();
+			            mRenderer.setAngleZ(
+			                    mRenderer.getAngleZ() +
+			                    ((dx) * TOUCH_SCALE_FACTOR));
+			    
+			            mRenderer.setAngleY(
+			                    mRenderer.getAngleY() +
+			                    ((dy) * TOUCH_SCALE_FACTOR));
+			    
 			    }
 
 			    mPreviousX = x;
 			    mPreviousY = y;
 			    return true;
-				
-				
-			    //return false;
-					
 			}
 			
 		});
-//        view = new CustomGLSurfaceView(this);
-//        setContentView(view);
         setContentView(openGLView);
         openGLView.setPreserveEGLContextOnPause(true);
     
