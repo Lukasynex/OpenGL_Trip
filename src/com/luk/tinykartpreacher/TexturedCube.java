@@ -182,9 +182,10 @@ public class TexturedCube {
 	 * @param gl - The GL Context
 	 * @param context - The Activity context
 	 */
-	public void loadGLTexture(GL10 gl, Context context) {
+	public void loadGLTexture(GL10 gl, Context context, int tex) {
 		//Get the texture from the Android resource directory
-		InputStream is = context.getResources().openRawResource(R.drawable.texture);
+		InputStream is = context.getResources().openRawResource(tex);
+		//R.drawable.texture
 		Bitmap bitmap = null;
 		try {
 			//BitmapFactory is an Android graphics utility for images

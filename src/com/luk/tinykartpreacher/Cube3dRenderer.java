@@ -32,7 +32,6 @@ public class Cube3dRenderer implements Renderer {
 	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
 		
-//		cube.loadGLTexture(gl, this.context);
 		gl.glEnable(GL10.GL_TEXTURE_2D);			//Enable Texture Mapping ( NEW )
 		gl.glShadeModel(GL10.GL_SMOOTH); 			//Enable Smooth Shading
 		gl.glClearColor(0.0f, 0.0f, 0.0f, 0.5f); 	//Black Background
@@ -101,6 +100,17 @@ public class Cube3dRenderer implements Renderer {
 	}
 	public float getAngleZ(){
 		return angleZ;
+	}
+
+	public void setZAngle(int progress) {
+		angleZ = progress;
+		
+	}
+
+	public void setYAngle(int progress) {
+		// TODO Auto-generated method stub
+		angleY = progress;
+		
 	}
 	
 	
