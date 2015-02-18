@@ -17,20 +17,16 @@ public class Cube3dRenderer implements Renderer {
 	private Custom3dCube cube;
 	// private TexturedCube cube;
 	private SecondCube cube2;
+	private boolean isRunning = true;
 
 	public Cube3dRenderer(Context context) {
 		cube = new Custom3dCube();
 		cube2 = new SecondCube();
-		// cube = new TexturedCube();
 		this.context = context;
 	}
 
 	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		
-//		cube.loadGLTexture(gl, context,R.drawable.aaa);
-//		cube2.loadGLTexture(gl, context,R.drawable.aaa);
-		
 		
 		gl.glEnable(GL10.GL_TEXTURE_2D); // Enable Texture Mapping ( NEW )
 		gl.glShadeModel(GL10.GL_SMOOTH); // Enable Smooth Shading
@@ -51,19 +47,20 @@ public class Cube3dRenderer implements Renderer {
 
 	@Override
 	public void onDrawFrame(GL10 gl) {
-
-		gl.glDisable(GL10.GL_DITHER);
-
-		gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
-		gl.glMatrixMode(GL10.GL_MODELVIEW);
-		gl.glLoadIdentity();
-		GLU.gluLookAt(gl, 3, 0, -8, 0, 0, 0, 0, 2, 0);
-
-		gl.glRotatef(angleZ, 0, 1, 0);
-
-		cube.draw(gl);
-		gl.glRotatef(angleY, 0, 0, 1);
-		cube2.draw(gl);
+		if(isRunning ){
+			gl.glDisable(GL10.GL_DITHER);
+	
+			gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
+			gl.glMatrixMode(GL10.GL_MODELVIEW);
+			gl.glLoadIdentity();
+			GLU.gluLookAt(gl, 3, 0, -8, 0, 0, 0, 0, 2, 0);
+	
+			gl.glRotatef(angleZ, 0, 1, 0);
+	
+			cube.draw(gl);
+			gl.glRotatef(angleY, 0, 0, 1);
+			cube2.draw(gl);
+		}
 	}
 
 	@Override
@@ -109,6 +106,16 @@ public class Cube3dRenderer implements Renderer {
 		// TODO Auto-generated method stub
 		angleY = progress;
 
+	}
+
+	public void onPause() {
+		// TODO Auto-generated method stub
+		isRunning = false;
+	}
+
+	public void onResume() {
+		// TODO Auto-generated method stub
+		isRunning = true;
 	}
 
 }
