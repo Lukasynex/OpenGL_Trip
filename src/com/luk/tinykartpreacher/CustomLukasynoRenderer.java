@@ -8,10 +8,9 @@ import android.opengl.GLSurfaceView.Renderer;
 
 public class CustomLukasynoRenderer implements Renderer {
 
-	private CustomTriangle trojkat;
-
+	Custom3dCube figure;
 	public CustomLukasynoRenderer() {
-		trojkat = new CustomTriangle();
+	figure = new Custom3dCube();
 	}
 
 	@Override
@@ -43,7 +42,7 @@ public class CustomLukasynoRenderer implements Renderer {
 		gl.glLoadIdentity();
 		GLU.gluLookAt(gl, 0, 0, - 29, 0, 0, 0, 0, 2, 0);
 
-		trojkat.draw(gl);
+		figure.draw(gl);
 	}
 
 }
