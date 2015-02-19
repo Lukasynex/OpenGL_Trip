@@ -29,8 +29,8 @@ public class Cube3dRenderer implements Renderer {
 
 	@Override
 	public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-		cubeVertical.loadGLTexture(gl, context, R.drawable.yellbla512);
-		cubeHorizontal.loadGLTexture(gl, context, R.drawable.yellbla512);
+		cubeVertical.loadGLTexture(gl, context, R.drawable.vertis2);
+		cubeHorizontal.loadGLTexture(gl, context, R.drawable.vertis3);
 
 		gl.glEnable(GL10.GL_TEXTURE_2D); // Enable Texture Mapping ( NEW )
 		gl.glShadeModel(GL10.GL_SMOOTH); // Enable Smooth Shading
