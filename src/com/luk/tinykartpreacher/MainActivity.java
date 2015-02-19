@@ -14,13 +14,16 @@ public class MainActivity extends Activity {
 	private float mPreviousY = 0;
 	private GLSurfaceView openGLView;
 	private Cube3dRenderer renderer = new Cube3dRenderer(this);
-
+//	private OpenGLRenderer a = new OpenGLRenderer();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
 		openGLView = new GLSurfaceView(this);
 		openGLView.setRenderer(renderer);
+//		openGLView.setRenderer(new SquareRenderer(true));
+		
+//		openGLView.setRenderer(a);
 //		openGLView.setEGLContextClientVersion(2);
 
 		openGLView.setOnTouchListener(new OnTouchListener() {
@@ -41,9 +44,11 @@ public class MainActivity extends Activity {
 						dy = dy * -1;
 					}
 
+					if(Math.abs(dx) > Math.abs(3*dy))
+					
 					renderer.setAngleZ(renderer.getAngleZ()
 							+ ((dx) * TOUCH_SCALE_FACTOR));
-
+					else if(Math.abs(dy) > Math.abs(3*dx))
 					renderer.setAngleY(renderer.getAngleY()
 							+ ((dy) * TOUCH_SCALE_FACTOR));
 				}
@@ -64,13 +69,13 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		openGLView.onResume();
-		renderer.onResume();
+//		renderer.onResume();
 	}
 
 	@Override
 	protected void onPause() {
 		openGLView.onPause();
-		renderer.onPause();
+//		renderer.onPause();
 	}
 
 	@Override
