@@ -70,10 +70,14 @@ public class Cube3dRenderer implements Renderer {
 			gl.glRotatef(angleZ, 0, 1, 0);
 
 			cubeVertical.draw(gl);
-			//!!!
-			gl.glTranslatef(0, -4, 0);
-			gl.glRotatef(angleY, 0, 1, 0);
+			
+			
+			/*
+			 * obrót wokół osi złączowej
+			 */
 			gl.glTranslatef(0, 4, 0);
+			gl.glRotatef(angleY, 0, 0, 1);
+			gl.glTranslatef(0, -4, 0);
 			cubeHorizontal.draw(gl);
 			
 		}
