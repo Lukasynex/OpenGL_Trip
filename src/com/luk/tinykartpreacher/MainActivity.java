@@ -46,7 +46,7 @@ public class MainActivity extends Activity {
 					}
 
 					if (Math.abs(dx) > Math.abs(3 * dy))
-						renderer.setAngleZ(renderer.getAngleZ()
+						renderer.setAngleX(renderer.getAngleX()
 								+ ((-dx) * TOUCH_SCALE_FACTOR));
 					else if (Math.abs(dy) > Math.abs(3 * dx))
 						renderer.setAngleY(renderer.getAngleY()

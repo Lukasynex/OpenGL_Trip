@@ -20,9 +20,14 @@ public class Cube3dRenderer implements Renderer {
 
 	public Cube3dRenderer(Context context) {
 		// cube = new Custom3dCube();
-		float cuboidVShape[] = { -0.2f, 0.2f, -4f, 0.2f, -0.2f, 0.2f };
+//		float cuboidVShape[] = { -0.2f, 0.2f, -4f, 0.2f, -0.2f, 0.2f };
+		float cuboidVShape[] = { -0.2f, 0.2f, -0.2f, 4.2f, -0.2f, 0.2f };
+		
 		cubeVertical = new LukasynoTexturedCuboid(cuboidVShape);
-		float cuboidHShape[] = { -0.2f, 3f, -0.2f, 0.2f, -0.2f, 0.2f };
+		
+//		float cuboidHShape[] = { -0.2f, 3f, -0.2f, 0.2f, -0.2f, 0.2f };
+		float cuboidHShape[] = { -0.2f, 3f, 3.8f, 4.2f, -0.2f, 0.2f };
+		
 		cubeHorizontal = new LukasynoTexturedCuboid(cuboidHShape);
 		this.context = context;
 	}
@@ -38,7 +43,7 @@ public class Cube3dRenderer implements Renderer {
 		gl.glClearDepthf(1.0f); // Depth Buffer Setup
 		gl.glEnable(GL10.GL_DEPTH_TEST); // Enables Depth Testing
 		gl.glDepthFunc(GL10.GL_LEQUAL); // The Type Of Depth Testing To Do
-
+		
 		// Really Nice Perspective Calculations
 		gl.glHint(GL10.GL_PERSPECTIVE_CORRECTION_HINT, GL10.GL_NICEST);
 
@@ -57,14 +62,22 @@ public class Cube3dRenderer implements Renderer {
 			gl.glClear(GL10.GL_COLOR_BUFFER_BIT | GL10.GL_DEPTH_BUFFER_BIT);
 			gl.glMatrixMode(GL10.GL_MODELVIEW);
 			gl.glLoadIdentity();
-			GLU.gluLookAt(gl, 3, 0, -8, 0, 0, 0, 0, 2, 0);
+//			GLU.gluLookAt(gl, 3, 0, -8, 0, 0, 0, 0, 2, 0);
+			GLU.gluLookAt(gl, 3, 5, -10, 0, 0, 0, 0, 4, 0);
 
 			// s.draw(gl);
+			gl.glRotatef(angleX, 1,0, 0);
+
 			gl.glRotatef(angleZ, 0, 1, 0);
 
 			cubeVertical.draw(gl);
+			//!!!
+			
 			gl.glRotatef(angleY, 0, 0, 1);
 			cubeHorizontal.draw(gl);
+
+
+			
 		}
 	}
 
@@ -112,5 +125,11 @@ public class Cube3dRenderer implements Renderer {
 		angleY = progress;
 
 	}
+	public void setXAngle(int progress) {
+		// TODO Auto-generated method stub
+		angleX = progress;
+
+	}
+		
 
 }
